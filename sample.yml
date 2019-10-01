@@ -1,0 +1,20 @@
+---
+- hosts: all
+  #vars:
+  # http_port: 80
+  become: yes
+  become_method: sudo
+  remote_user: ubuntu
+
+  tasks:
+   - name: install java
+     apt: pkg=openjdk-8-jdk state=latest update_cache=true
+   - name: tomcat setup
+     apt: pkg=tomcat9 state=latest update_cache=true
+   - name: Nginx setup
+     apt: pkg=nginx state=latest update_cache=true
+   - name: maven setup
+     apt: pkg=maven state=latest update_cache=true
+   - name: Copy nginx configuration for wordpress
+     template: src=index.html dest=/usr/share/nginx/html/index.html
+
