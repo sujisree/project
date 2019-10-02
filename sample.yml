@@ -8,13 +8,13 @@
 
   tasks:
    - name: install java
-     apt: pkg=openjdk-8-jdk state=latest update_cache=true
+     apt: pkg=openjdk-8-jdk state=present update_cache=true force_apt_get=yes
    - name: tomcat setup
-     apt: pkg=tomcat9 state=latest update_cache=true
+     apt: pkg=tomcat9 state=present update_cache=true force_apt_get=yes
    - name: Nginx setup
-     apt: pkg=nginx state=latest update_cache=true
+     apt: pkg=nginx state=latest update_cache=true force_apt_get=yes
    - name: maven setup
-     apt: pkg=maven state=latest update_cache=true
+     apt: pkg=maven state=latest update_cache=true force_apt_get=yes
    - name: Copy nginx configuration for wordpress
      template: src=index.html dest=/usr/share/nginx/html/index.html
 
